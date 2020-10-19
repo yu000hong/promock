@@ -1,5 +1,12 @@
 package main
 
+import (
+	"strconv"
+	"strings"
+	log "github.com/golang/glog"
+	"github.com/richmonkey/cfg"
+)
+
 //Config 配置信息
 type Config struct {
 	HTTPServerAddress string

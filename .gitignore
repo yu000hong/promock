@@ -1,0 +1,16 @@
+.DS_Store
+*~
+.idea
+.vscode
+bin
+*.cfg
+benchmark
+benchmark_group
+benchmark_connection
+benchmark_sender
+main.test
+benchmark_storage
+benchmark_route
+*.log
+*.pyc
+main/main
