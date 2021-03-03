@@ -1,0 +1,36 @@
+// package main
+
+// import (
+// 	"database/sql"
+// )
+
+// type Rule struct {
+// 	Appid             int               `json:"appid"`
+// 	Rid               int               `json:"rid"`
+// 	Version           string            `json:"version"`
+// 	Platform          string            `json:"platform"`
+// 	Device            string            `json:"device"`
+// 	Uid               string            `json:"uid"`
+// }
+
+// func SaveApp(db *sql.DB, app *App) {
+// 	data, _ := json.Marshal(app.AdditionalHeaders)
+// 	additionalHeaders := string(data)
+// 	data, _ = json.Marshal(app.AdditionalParams)
+// 	additionalParams := string(data)
+// 	includeUrls := strings.Join(app.IncludeUrls, ",")
+// 	excludeUrls := strings.Join(app.ExcludeUrls, ",")
+// 	includeMethods := strings.Join(app.IncludeMethods, ",")
+// 	excludeMethods := strings.Join(app.ExcludeMethods, ",")
+// 	_, _ = db.Exec("INSERT INTO `app`(`key`,`name`,`host`,`create_time`) VALUES(?,?,?,UNIX_TIMESTAMP())",
+// 		app.Key, app.Name, app.Host)
+// }
+
+// func DelApp(db *sql.DB, key string) {
+// 	_, _ = db.Exec("DELTE FROM `app` WHERE `key`=?", key)
+// }
+
+// func UpdateApp(db *sql.DB, app *App) {
+// 	_, _ = db.Exec("UPDATE `app` SET `key`=?,`name`=?,`host`=? WHERE `id`=?",
+// 		app.Key, app.Name, app.Host, app.Appid)
+// }

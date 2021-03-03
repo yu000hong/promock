@@ -174,3 +174,38 @@ func ToJSON(v interface{}) string {
 	} 
 	return string(data)
 }
+
+// GetStringParam 字符串参数
+func GetStringParam(key2values map[string][]string, key string) string {
+	if values, ok := key2values[key]; ok {
+		return values[0]
+	}
+	return ""
+}
+
+// GetIntegerParam 整型参数
+func GetIntegerParam(key2values map[string][]string, key string) int64 {
+	value := 0
+	if values, ok := key2values[key]; ok {
+		value, _ = strconv.Atoi(values[0])
+	}
+	return int64(value)
+}
+
+// GetFloatParam 浮点型参数
+func GetFloatParam(key2values map[string][]string, key string) float64 {
+	var value float64 = 0
+	if values, ok := key2values[key]; ok {
+		value, _ = strconv.ParseFloat(values[0], 64)
+	}
+	return float64(value)
+}
+
+// GetVersionParam 版本参数
+func GetVersionParam(key2values map[string][]string, key string) Version {
+	var value Version = ""
+	if values, ok := key2values[key]; ok {
+		value = Version(values[0])
+	}
+	return value
+}

@@ -40,5 +40,27 @@ func main() {
 }
 
 func rootHandler(rw http.ResponseWriter, req * http.Request) {
-	ServeProxy(rw, req)
+	if _, ok := host2app[req.Host]; ok {
+		ServeProxy(rw, req)
+	} else {
+		processAPI(rw, req)
+	}
+}
+
+func processAPI(rw http.ResponseWriter, req *http.Request) {
+	path := req.URL.Path
+	switch path {
+	case "/promock/app/del":
+		apiAppDel(rw, req)
+	case "/promock/app/add":
+		apiAppAdd(rw, req)
+	case "/promock/app/update":
+		apiAppUpdate(rw, req)
+	case "/promock/app/list":
+		apiAppList(rw, req)
+	default:
+		//TODO 404
+		fmt.Println("Unknown path: ", path)
+		FailResponse(rw)
+	}
 }
